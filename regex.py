@@ -1,3 +1,4 @@
+import re
 # 1. Python Regular Expressions Mastery
 # Task 1: Code Correction
 
@@ -6,16 +7,39 @@
 
 # Code Example:
 
-# import re
 
-# text = "Contact emails are: john.doe@example.com and jane.doe@example.com."
-# emails = re.findall(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", text)
+text = "Contact emails are: john.doe@example.com and jane.doe@example.com."
+
+
+# testing = re.findall(r"[a-zA-Z0-9._%+-]{2,}", text) 
+# # print(testing)
+# '''this prints every word in the text string excluding special
+# characters if they 
+# aren't in middle '''
+
+# testing2 = re.findall(r"@[a-zA-Z0-9.%+-]{2,}", text)
+# # print(testing2)
+# ''' this prints out anything from @ to .com if i remove the . 
+# it wont print out .com'''
+
+
+
+emails = re.findall(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-z|[A-Z]{2,}", text)
 # print(emails)
-# Expected Outcome:
 
+redacted = re.sub(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+.",r"[ANONYMIZED USER]", text)
+# print(redacted)
+
+
+# Expected Outcome:
 # Correctly reformat the date in each log entry.
 # Replace all instances of '@username' with '[ANONYMIZED USER]'.
 # Use re.sub() effectively to achieve the desired text manipulations.
+
+
+
+
+
 # 2. Python Regular Expressions Deep Dive
 # Objective:
 # The aim of this assignment is to deepen your practical skills in Python's regular expressions, enhancing your ability to process and manipulate text data. You will tackle a variety of real-world scenarios, applying regex to extract, validate, and transform text effectively.
@@ -27,7 +51,7 @@
 
 # Code Example:
 
-# import re
+
 
 # text = "Emails: user1@domain.com, user2@exclude.com, user3@domain.com"
 # emails = re.findall(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b", text)
@@ -47,7 +71,7 @@
 
 # Code Example:
 
-# import re
+
 
 # text = "Name: John Doe; Age: 30; Occupation: Engineer; Location: New York"
 # # Extract the Occupation from the text
