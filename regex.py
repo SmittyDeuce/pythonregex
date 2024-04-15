@@ -8,7 +8,7 @@ import re
 # Code Example:
 
 
-text = "Contact emails are: john.doe@example.com and jane.doe@example.com."
+# text = "Contact emails are: john.doe@example.com and jane.doe@example.com."
 
 
 # testing = re.findall(r"[a-zA-Z0-9._%+-]{2,}", text) 
@@ -24,10 +24,10 @@ text = "Contact emails are: john.doe@example.com and jane.doe@example.com."
 
 
 
-emails = re.findall(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-z|[A-Z]{2,}", text)
+# emails = re.findall(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-z|[A-Z]{2,}", text)
 # print(emails)
 
-redacted = re.sub(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+.",r"[ANONYMIZED USER]", text)
+# redacted = re.sub(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+.",r"[ANONYMIZED USER]", text)
 # print(redacted)
 
 
@@ -51,16 +51,26 @@ redacted = re.sub(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+.",r"[ANONYMIZED USER]", tex
 
 # Code Example:
 
-
-
 # text = "Emails: user1@domain.com, user2@exclude.com, user3@domain.com"
 # emails = re.findall(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b", text)
 # print(emails)
-# Expected Outcome:
 
+# Expected Outcome:
 # Adapt the regex pattern to exclude email addresses from 'exclude.com'.
 # Ensure the script still extracts all other valid email addresses.
+
+# text = "Emails: user1@domain.com, user2@exclude.com, user3@domain.com"
+# emails = re.findall(r"\b[A-Za-z0-9._%+-]+@[domain]+\.[A-Z|a-z]{2,}\b", text)
+# print(emails)
+
+
+
 # 3. Advanced Text Processing with Python Regex
+
+
+
+
+
 # Objective:
 # The goal of this assignment is to harness the full potential of Python's Regular Expressions for advanced text processing. You'll tackle complex tasks involving data extraction, validation, and transformation, sharpening your skills in applying regex in various challenging scenarios.
 
