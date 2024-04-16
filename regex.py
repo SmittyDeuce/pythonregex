@@ -22,23 +22,12 @@ import re
 # ''' this prints out anything from @ to .com if i remove the . 
 # it wont print out .com'''
 
+def codeCorrection():
+    text = "Contact emails are: john.doe@example.com and jane.doe@example.com."
+    emails = re.findall(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-z|[A-Z]{2,}", text)
+    print(emails)
 
-
-# emails = re.findall(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-z|[A-Z]{2,}", text)
-# print(emails)
-
-# redacted = re.sub(r"[a-z0-9._%+-]+@[a-zA-Z0-9._%+-]+.",r"[ANONYMIZED USER]", text)
-# print(redacted)
-
-
-# Expected Outcome:
-# Correctly reformat the date in each log entry.
-# Replace all instances of '@username' with '[ANONYMIZED USER]'.
-# Use re.sub() effectively to achieve the desired text manipulations.
-
-
-
-
+codeCorrection()
 
 # 2. Python Regular Expressions Deep Dive
 # Objective:
@@ -59,16 +48,16 @@ import re
 # Adapt the regex pattern to exclude email addresses from 'exclude.com'.
 # Ensure the script still extracts all other valid email addresses.
 
-# text = "Emails: user1@domain.com, user2@exclude.com, user3@domain.com"
-# emails = re.findall(r"\b[A-Za-z0-9._%+-]+@[domain]+\.[A-Z|a-z]{2,}\b", text)
-# print(emails)
+
+def emailExtraction():
+    text = "Emails: user1@domain.com, user2@exclude.com, user3@domain.com"
+    emails = re.findall(r"\b[A-Za-z0-9._%+-]+@[domain]+\.[A-Z|a-z]{2,}\b", text)
+    print(emails)
+emailExtraction()
 
 
 
 # 3. Advanced Text Processing with Python Regex
-
-
-
 
 
 # Objective:
@@ -80,16 +69,20 @@ import re
 # Develop a script to extract specific information from a formatted text. The text contains data entries delimited by semicolons and formatted as 'Key: Value'. Extract the value corresponding to a specific key.
 
 # Code Example:
-
-
-
 # text = "Name: John Doe; Age: 30; Occupation: Engineer; Location: New York"
-# # Extract the Occupation from the text
-# # Your code here
-# Expected Outcome:
 
-# Correctly identify and categorize valid and invalid URLs from the list.
-# Use regex to validate the format of each URL.
+# Expected Outcome:
+# Extract the Occupation from the text
+
+def dataExtraction():
+    text = "Name: John Doe; Age: 30; Occupation: Engineer; Location: New York"
+    extracted = re.search("Occupation: Engineer",text)
+    if extracted:
+        occupation = extracted.group(0)
+        print(occupation)
+dataExtraction()
+
+
 # 4. Python Regex Challenge: Enhancing E-Commerce Operations
 # Objective:
 
@@ -102,14 +95,28 @@ import re
 
 # Code Example:
 
-# descriptions = [
-#     "Smartphone with 6-inch screen and 128GB memory",
-#     "Cotton t-shirt in medium size",
-#     "Stainless steel kitchen knife set"
-# ]
-# # Tag each product based on keywords in the description
-# # Your code here
-# Expected Outcome:
+descriptions = [
+    "Smartphone with 6-inch screen and 128GB memory",
+    "Cotton t-shirt in medium size",
+    "Stainless steel kitchen knife set"
+]
+# Tag each product based on keywords in the description
+# Your code here
 
-# Convert all price formats in the string to a standardized 'USD XX.XX' format.
-# Use re.sub() to perform the necessary replacements and format transformations.
+keywords = ['Electronics', 'Apparel', 'Home & Kitchen']
+
+def ecommerceOperations(description):
+    tagged = []
+    for descriptor in description:
+        if "smartphone" in descriptor or 'memory' in descriptor:
+            tagged.append(('Electronics', descriptor))
+        if "shirt" in descriptor:
+            tagged.append(("Apparel", descriptor))
+        if "kitchen" in descriptor:
+            tagged.append(("Home & Kitchen", descriptor))
+    # print(tagged)
+
+    for tag, product in tagged:
+        print(f"{tag}: {product} ")
+
+ecommerceOperations(descriptions)
